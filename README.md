@@ -29,23 +29,23 @@ Esta aplicação expõe endpoints para criar, consultar, atualizar e remover usu
    spring.jpa.hibernate.ddl-auto=update
 
 
-   ## Estrutura de Pastas
+ ## Estrutura de Pastas
 
-| Caminho                                | Descrição                                                                 |
-|----------------------------------------|---------------------------------------------------------------------------|
-| **controller/**                        | Contém os controladores REST (camada responsável por expor os endpoints). |
-| ├── `UsuarioController.java`           | Controla as operações relacionadas a `Usuario`.                          |
-|             |
-| **service/**                           | Contém as regras de negócio da aplicação.                                |
-| ├── `UsuarioService.java`              | Implementa a lógica relacionada a `Usuario`.                             |
-|                 
-| **repository/**                        | Camada de acesso a dados (interfaces JPA).                               |
-| ├── `UsuarioRepository.java`           | Repositório para operações de persistência de `Usuario`.                 |
-|               |
-| **model/**                             | Define as entidades e classes de domínio.                                |
-| ├── `Usuario.java`                     | Entidade que representa o usuário.                                       |
-| ├── `Perfil.java`                      | Entidade que representa o perfil do usuário.                             |
-                                  
+| Caminho                        | Descrição                                                                 |
+|--------------------------------|---------------------------------------------------------------------------|
+| **controller/**                 | Contém os controladores REST (camada responsável por expor os endpoints). |
+| ├── `UsuarioController.java`    | Controla as operações relacionadas a `Usuario`.                          |
+|                                |                                                                           |
+| **service/**                    | Contém as regras de negócio da aplicação.                                |
+| ├── `UsuarioService.java`       | Implementa a lógica relacionada a `Usuario`.                             |
+|                                |                                                                           |
+| **repository/**                 | Camada de acesso a dados (interfaces JPA).                               |
+| ├── `UsuarioRepository.java`    | Repositório para operações de persistência de `Usuario`.                 |
+|                                |                                                                           |
+| **model/**                      | Define as entidades e classes de domínio.                                |
+| ├── `Usuario.java`              | Entidade que representa o usuário.                                       |
+| ├── `Perfil.java`               | Entidade que representa o perfil do usuário.                             |
+
 
 
 ## Estrutura de Usuário e Perfil
