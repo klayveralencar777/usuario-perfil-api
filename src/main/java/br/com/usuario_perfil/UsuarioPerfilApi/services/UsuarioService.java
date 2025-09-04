@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.usuario_perfil.UsuarioPerfilApi.entities.Perfil;
 import br.com.usuario_perfil.UsuarioPerfilApi.entities.Usuario;
 import br.com.usuario_perfil.UsuarioPerfilApi.exceptions.EmailAlreadyExistsException;
 import br.com.usuario_perfil.UsuarioPerfilApi.exceptions.EntityNotFoundException;
+import br.com.usuario_perfil.UsuarioPerfilApi.exceptions.UserPerfilIsNullException;
+import br.com.usuario_perfil.UsuarioPerfilApi.repository.PerfilRepository;
 import br.com.usuario_perfil.UsuarioPerfilApi.repository.UsuarioRepository;
 
 
@@ -18,6 +21,7 @@ public class UsuarioService {
     
     @Autowired
     private UsuarioRepository userRepo;
+    private PerfilRepository perfilRepo;
 
     public List<Usuario> findUsers() {
         return userRepo.findAll();
@@ -26,6 +30,19 @@ public class UsuarioService {
     public Usuario findByIdUser(Long id) {
         return userRepo.findById(id).orElseThrow(
             () -> new EntityNotFoundException("Usuário não encontrado com o ID: " + id));
+
+    }
+    
+    public Perfil findPerfil(Long id) {
+        Usuario usuario = findByIdUser(id);
+            if(usuario.getPerfil() == null) {
+                throw new UserPerfilIsNullException("Esse usuário não possui perfil.");
+                
+                
+            }
+            return usuario.getPerfil();
+
+
 
     }
 

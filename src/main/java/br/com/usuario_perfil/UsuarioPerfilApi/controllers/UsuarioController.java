@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.usuario_perfil.UsuarioPerfilApi.entities.Perfil;
 import br.com.usuario_perfil.UsuarioPerfilApi.entities.Usuario;
 import br.com.usuario_perfil.UsuarioPerfilApi.services.UsuarioService;
 import jakarta.validation.Valid;
@@ -36,6 +37,12 @@ public class UsuarioController {
     public ResponseEntity<Usuario> findByIdUser(@PathVariable Long id) {
         Usuario findUser = userService.findByIdUser(id);
         return ResponseEntity.status(200).body(findUser);
+    }
+    @GetMapping("/perfil/{id}")
+    public ResponseEntity<Perfil> findPerfilByUser(@PathVariable Long id) {
+        Perfil perfil = userService.findPerfil(id);
+        return ResponseEntity.status(200).body(perfil);
+
     }
 
     @PostMapping

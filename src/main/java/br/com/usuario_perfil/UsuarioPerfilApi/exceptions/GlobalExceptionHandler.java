@@ -22,6 +22,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(409).body(ex.getMessage());
     }
 
+    public ResponseEntity<String> userPerfilIsNull(UserPerfilIsNullException ex) {
+        return ResponseEntity.status(404).body(ex.getMessage());
+
+    }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> genericException(Exception ex) {
         return ResponseEntity.status(500).body("Erro interno no servidor!");
