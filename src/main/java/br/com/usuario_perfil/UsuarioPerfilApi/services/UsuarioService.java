@@ -59,16 +59,14 @@ public class UsuarioService {
 
     @Transactional
     public void deleteUser(Long id) {
-        Usuario usuarioDeletado = userRepo.findById(id).orElseThrow(
-            () -> new EntityNotFoundException("Usuário não encontrado para deleção com o ID: " + id));
+        Usuario usuarioDeletado = findByIdUser(id);
             userRepo.delete(usuarioDeletado);
         
     }
 
     @Transactional
     public Usuario updateUsers(Long id, Usuario novoUsuario) {
-        Usuario usuario = userRepo.findById(id).orElseThrow(
-            () -> new EntityNotFoundException("Usuário não encontrado com o ID: " + id));
+        Usuario usuario = findByIdUser(id);
             usuario.setNome(novoUsuario.getNome());
             usuario.setEmail(novoUsuario.getEmail());
             if(novoUsuario.getPerfil() != null) {
